@@ -1,52 +1,55 @@
 <script setup lang="ts">
 interface Skill {
-  name: string
-  level?: number
+  name: string;
+  level?: number;
 }
 
 interface SkillCategory {
-  title: string
-  skills: Skill[]
+  title: string;
+  skills: Skill[];
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Frontend',
+    title: "Frontend",
     skills: [
-      { name: 'HTML/CSS' },
-      { name: 'JavaScript' },
-      { name: 'TypeScript' },
-      { name: 'Vue.js' },
-      { name: 'React' },
+      { name: "Vue.js" },
+      { name: "TypeScript" },
+      { name: "JavaScript" },
+      { name: "HTML5" },
+      { name: "CSS3" },
+      { name: "jQuery" },
     ],
   },
   {
-    title: 'Styling',
+    title: "State & UI",
     skills: [
-      { name: 'Tailwind CSS' },
-      { name: 'SCSS/Sass' },
-      { name: 'CSS-in-JS' },
-      { name: 'Styled Components' },
+      { name: "Pinia" },
+      { name: "Storybook" },
+      { name: "Vee-Validation" },
+      { name: "ARIA" },
     ],
   },
   {
-    title: 'Tools & Environment',
+    title: "Backend & DB",
     skills: [
-      { name: 'Git' },
-      { name: 'VS Code' },
-      { name: 'Vite' },
-      { name: 'Webpack' },
-      { name: 'npm/pnpm' },
+      { name: "Spring Boot" },
+      { name: "JSP" },
+      { name: "MyBatis" },
+      { name: "MariaDB" },
     ],
   },
   {
-    title: 'Design',
+    title: "AI & Tools",
     skills: [
-      { name: 'Figma' },
-      { name: 'Adobe XD' },
+      { name: "n8n" },
+      { name: "Pinecone" },
+      { name: "MCP Server" },
+      { name: "Git" },
+      { name: "Vite" },
     ],
   },
-]
+];
 </script>
 
 <template>
@@ -63,7 +66,11 @@ const skillCategories: SkillCategory[] = [
         >
           <h3 class="category-title">{{ category.title }}</h3>
           <div class="skill-list">
-            <span v-for="skill in category.skills" :key="skill.name" class="skill-tag">
+            <span
+              v-for="skill in category.skills"
+              :key="skill.name"
+              class="skill-tag"
+            >
               {{ skill.name }}
             </span>
           </div>

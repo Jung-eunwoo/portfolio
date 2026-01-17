@@ -1,35 +1,36 @@
 <script setup lang="ts">
 interface Experience {
-  company: string
-  role: string
-  period: string
-  description: string[]
-  tech?: string[]
+  company: string;
+  role: string;
+  period: string;
+  description: string[];
+  tech?: string[];
 }
 
 const experiences: Experience[] = [
   {
-    company: '회사명',
-    role: 'Frontend Developer',
-    period: '2023.01 - 현재',
+    company: "체인팜",
+    role: "Frontend Developer",
+    period: "2024.06 - 현재",
     description: [
-      '주요 업무 및 성과를 작성하세요.',
-      '프로젝트 경험과 기여한 내용을 설명합니다.',
-      '구체적인 수치나 결과가 있다면 포함하세요.',
+      "미리해핏 사용자/관리자 앱: Vue.js, TypeScript, Pinia, Storybook 기반 예약 시스템 개발",
+      'AI CS 챗봇 "미리봇": n8n AI Agent 응답 시간 1분 10초 → 15초로 80% 단축',
+      "웹 접근성 인증: 4개 공공 웹사이트 웹 접근성 인증 심사 통과",
+      "관광 예약 웹사이트 리뉴얼(인천시티투어): 프론트엔드 전체 담당, 약 13개월 진행",
+      "여주시 공공 체육시설 통합 예약 시스템: 풀스택 개발 주도, PG 연동 및 카카오 알림톡 API 연동",
+      "유지보수 총괄: 공공기관 및 민간 웹사이트 21개 동시 관리",
     ],
-    tech: ['Vue.js', 'TypeScript', 'Pinia'],
-  },
-  {
-    company: '이전 회사명',
-    role: 'Junior Frontend Developer',
-    period: '2021.06 - 2022.12',
-    description: [
-      '주요 업무 및 성과를 작성하세요.',
-      '프로젝트 경험과 기여한 내용을 설명합니다.',
+    tech: [
+      "Vue.js",
+      "TypeScript",
+      "Pinia",
+      "Storybook",
+      "n8n",
+      "Spring Boot",
+      "jQuery",
     ],
-    tech: ['React', 'JavaScript', 'Redux'],
   },
-]
+];
 </script>
 
 <template>
@@ -81,7 +82,7 @@ const experiences: Experience[] = [
 }
 
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -153,7 +154,7 @@ const experiences: Experience[] = [
 }
 
 .exp-description li::before {
-  content: '—';
+  content: "—";
   position: absolute;
   left: 0;
   color: var(--text-muted);
@@ -168,7 +169,7 @@ const experiences: Experience[] = [
 .tech-tag {
   font-size: 0.8rem;
   color: var(--text-muted);
-  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-family: "SF Mono", "Fira Code", monospace;
 }
 
 @media (max-width: 768px) {
