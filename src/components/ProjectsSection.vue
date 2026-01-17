@@ -159,7 +159,12 @@ const projects: Project[] = [
               </div>
             </div>
 
-            <h3 class="project-title">{{ project.title }}</h3>
+            <div class="project-title-row">
+              <h3 class="project-title">{{ project.title }}</h3>
+              <span v-if="project.featured" class="featured-badge"
+                >Featured</span
+              >
+            </div>
             <div class="project-meta">
               <span class="project-company">{{ project.company }}</span>
               <span class="project-period">{{ project.period }}</span>
@@ -190,19 +195,51 @@ const projects: Project[] = [
 }
 
 .project-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 2rem;
+  overflow: hidden;
 }
 
 .project-card.featured {
-  border-color: var(--forest-dark);
-  border-width: 1.5px;
+  border-left: 3px solid var(--forest-medium);
 }
 
 .project-card.featured:hover {
-  border-color: var(--forest-glow);
-  box-shadow: 0 5px 25px rgba(106, 191, 123, 0.3);
+  border-left-color: var(--forest-glow);
+}
+
+.project-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.project-title {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.project-title:hover {
+  white-space: normal;
+  overflow: visible;
+}
+
+.featured-badge {
+  flex-shrink: 0;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--forest-medium);
+  border: 1px solid var(--forest-medium);
+  border-radius: 3px;
 }
 
 .project-header {
@@ -231,12 +268,6 @@ const projects: Project[] = [
   flex: 1;
   display: flex;
   flex-direction: column;
-}
-
-.project-title {
-  font-size: 1.25rem;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
 }
 
 .project-meta {
