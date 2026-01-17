@@ -10,17 +10,17 @@
 
 ```typescript
 // ✅ 파일명: 파스칼케이스 (PascalCase)
-UserProfile.vue
-MainLayout.vue
-AuthService.ts
+UserProfile.vue;
+MainLayout.vue;
+AuthService.ts;
 
 // ✅ 변수명: 카멜케이스 (camelCase)
-const userName = 'John';
+const userName = "John";
 const isActive = true;
-const buttonColor = '#fff';
+const buttonColor = "#fff";
 
 // ✅ 상수명: 대문자 영어 스네이크케이스 (UPPER_SNAKE_CASE)
-const API_BASE_URL = 'https://api.example.com';
+const API_BASE_URL = "https://api.example.com";
 const MAX_RETRY_COUNT = 3;
 const DEFAULT_TIMEOUT = 5000;
 ```
@@ -43,20 +43,20 @@ feature/기능명 ← 개별 기능 개발 브랜치
 
 ### 브랜치 종류 및 역할
 
-| 브랜치 이름 | 용도 |
-|------------|------|
-| `release` | 배포 완료된 안정적인 코드만 포함 |
-| `main` | 배포 직전 최종 QA를 위한 브랜치 |
-| `develop` (dev) | 개발 통합 브랜치 (feat 브랜치들이 여기로 병합) |
-| `feat/기능명` | 실제 개발 작업 진행, 완료 시 dev로 PR |
-| `fix/버그명` | 버그 수정 전용 브랜치 |
-| `design/작업명` | CSS 및 디자인 작업 |
-| `refactor/작업명` | 기능 변화 없이 코드 구조 개선 |
-| `test/테스트명` | 테스트 코드 추가 |
-| `chore/작업명` | 설정 변경, 문서 작업 등 코드 외 작업 |
-| `docs/문서명` | 프로젝트 문서 작성 |
-| `comment/작업명` | 주석 및 코드 내부 설명 추가 |
-| `hotfix/긴급수정` | 운영 중 긴급 이슈 수정 (main에 직접 병합) |
+| 브랜치 이름       | 용도                                           |
+| ----------------- | ---------------------------------------------- |
+| `release`         | 배포 완료된 안정적인 코드만 포함               |
+| `main`            | 배포 직전 최종 QA를 위한 브랜치                |
+| `develop` (dev)   | 개발 통합 브랜치 (feat 브랜치들이 여기로 병합) |
+| `feat/기능명`     | 실제 개발 작업 진행, 완료 시 dev로 PR          |
+| `fix/버그명`      | 버그 수정 전용 브랜치                          |
+| `design/작업명`   | CSS 및 디자인 작업                             |
+| `refactor/작업명` | 기능 변화 없이 코드 구조 개선                  |
+| `test/테스트명`   | 테스트 코드 추가                               |
+| `chore/작업명`    | 설정 변경, 문서 작업 등 코드 외 작업           |
+| `docs/문서명`     | 프로젝트 문서 작성                             |
+| `comment/작업명`  | 주석 및 코드 내부 설명 추가                    |
+| `hotfix/긴급수정` | 운영 중 긴급 이슈 수정 (main에 직접 병합)      |
 
 ### 브랜치 생성 규칙
 
@@ -108,17 +108,17 @@ feat/* → develop → main → release
 
 ### 커밋 타입
 
-| 타입 | 설명 | 예시 |
-|------|------|------|
-| `feat` | 새로운 기능 추가 | `feat: 회원가입 입력폼 유효성 검증 추가` |
-| `fix` | 버그 수정 | `fix: 예약 목록 조회 실패 오류 수정` |
-| `design` | CSS 및 UI 변경 | `design: 메인 헤더 반응형 레이아웃 수정` |
-| `refactor` | 코드 리팩토링 | `refactor: API 호출 로직 모듈화` |
-| `test` | 테스트 코드 추가/수정 | `test: 로그인 API 테스트 추가` |
-| `chore` | 설정 파일 수정, 빌드 설정 | `chore: ESLint 설정 파일 수정` |
-| `docs` | 문서 작성/수정 | `docs: README 작성` |
-| `comment` | 주석 추가/수정 | `comment: 유틸리티 함수 주석 추가` |
-| `hotfix` | 긴급 수정 | `hotfix: 프로덕션 로그인 오류 긴급 수정` |
+| 타입       | 설명                      | 예시                                     |
+| ---------- | ------------------------- | ---------------------------------------- |
+| `feat`     | 새로운 기능 추가          | `feat: 회원가입 입력폼 유효성 검증 추가` |
+| `fix`      | 버그 수정                 | `fix: 예약 목록 조회 실패 오류 수정`     |
+| `design`   | CSS 및 UI 변경            | `design: 메인 헤더 반응형 레이아웃 수정` |
+| `refactor` | 코드 리팩토링             | `refactor: API 호출 로직 모듈화`         |
+| `test`     | 테스트 코드 추가/수정     | `test: 로그인 API 테스트 추가`           |
+| `chore`    | 설정 파일 수정, 빌드 설정 | `chore: ESLint 설정 파일 수정`           |
+| `docs`     | 문서 작성/수정            | `docs: README 작성`                      |
+| `comment`  | 주석 추가/수정            | `comment: 유틸리티 함수 주석 추가`       |
+| `hotfix`   | 긴급 수정                 | `hotfix: 프로덕션 로그인 오류 긴급 수정` |
 
 ### 커밋 예시
 
@@ -167,3 +167,25 @@ git push origin feat/user-profile
 
 - [Git 브랜치 전략: GitFlow](https://nvie.com/posts/a-successful-git-branching-model/)
 - [Conventional Commit 규칙](https://www.conventionalcommits.org/ko/v1.0.0/)
+
+---
+
+## 🤖 Gemini 활용 가이드 (비용 절감)
+
+### 역할 분담
+
+- **Gemini**: 초안 코드, CRUD, CSS, 보일러플레이트, 문서/주석
+- **Claude**: 아키텍처 설계, 코드 검토, 디버깅, 보안 검토, 최종 검증
+
+### 사용법
+
+```typescript
+import { generateContent } from "@/services/GeminiService";
+const code = await generateContent("Vue 버튼 컴포넌트 만들어줘");
+```
+
+### Gemini 금지 영역
+
+- ❌ 보안/인증 코드
+- ❌ API 키/환경 변수
+- ❌ 복잡한 비즈니스 로직
