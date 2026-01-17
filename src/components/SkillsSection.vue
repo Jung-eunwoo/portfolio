@@ -106,15 +106,17 @@ const skillCategories: SkillCategory[] = [
 .skill-tag {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
+  background: transparent;
+  border: 1px solid var(--forest-light);
   border-radius: 9999px;
   font-size: 0.875rem;
-  color: var(--text-primary);
+  color: var(--forest-dark);
   transition: all 0.2s ease;
 }
 
 .skill-tag:hover {
-  border-color: var(--text-primary);
+  background: var(--forest-light);
+  border-color: var(--forest-light);
+  color: #ffffff;
 }
 </style>

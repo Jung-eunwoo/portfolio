@@ -110,10 +110,16 @@ const highlights = [
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  color: var(--text-primary);
+  background: var(--forest-pale);
+  border: 1px solid var(--forest-light);
+  color: var(--forest-dark);
   margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.highlight-card:hover .highlight-icon {
+  background: var(--forest-light);
+  color: #ffffff;
 }
 
 .highlight-title {

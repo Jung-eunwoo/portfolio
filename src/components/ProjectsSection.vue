@@ -109,7 +109,13 @@ const projects: Project[] = [
 }
 
 .project-card.featured {
-  border-color: var(--border-strong);
+  border-color: var(--forest-dark);
+  border-width: 1.5px;
+}
+
+.project-card.featured:hover {
+  border-color: var(--forest-glow);
+  box-shadow: 0 5px 25px rgba(106, 191, 123, 0.3);
 }
 
 .project-header {
@@ -127,11 +133,11 @@ const projects: Project[] = [
 
 .project-link {
   color: var(--text-muted);
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .project-link:hover {
-  color: var(--text-primary);
+  color: var(--forest-dark);
 }
 
 .project-content {
@@ -163,7 +169,7 @@ const projects: Project[] = [
 
 .tech-tag {
   font-size: 0.8rem;
-  color: var(--text-muted);
+  color: var(--forest-medium);
   font-family: 'SF Mono', 'Fira Code', monospace;
 }
 </style>

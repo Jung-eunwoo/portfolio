@@ -86,6 +86,10 @@ onMounted(() => {
   margin-bottom: 0.75rem;
   font-weight: 600;
   letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--forest-dark), var(--forest-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .hero-role {
@@ -127,8 +131,9 @@ onMounted(() => {
 }
 
 .social-link:hover {
-  color: var(--text-primary);
-  border-color: var(--text-primary);
+  color: var(--forest-dark);
+  border-color: var(--forest-dark);
+  background: var(--forest-pale);
 }
 
 @media (max-width: 768px) {
