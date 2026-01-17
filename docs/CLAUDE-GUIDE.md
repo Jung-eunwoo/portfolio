@@ -170,22 +170,67 @@ git push origin feat/user-profile
 
 ---
 
-## 🤖 Gemini 활용 가이드 (비용 절감)
+## 🤖 Claude + Gemini CLI 파이프라인 (비용 절감)
 
 ### 역할 분담
 
-- **Gemini**: 초안 코드, CRUD, CSS, 보일러플레이트, 문서/주석
-- **Claude**: 아키텍처 설계, 코드 검토, 디버깅, 보안 검토, 최종 검증
+**Gemini CLI 담당 (전처리)**:
 
-### 사용법
+- 초안 코드 생성 (CRUD, 보일러플레이트)
+- CSS/스타일링 작업
+- 문서/주석 작성
+- 긴 문서 요약
+- 코드베이스 분석 (대용량 컨텍스트)
 
-```typescript
-import { generateContent } from "@/services/GeminiService";
-const code = await generateContent("Vue 버튼 컴포넌트 만들어줘");
+**Claude 담당 (심화 분석)**:
+
+- 아키텍처 설계 및 검토
+- 보안/인증 코드 작성
+- 복잡한 비즈니스 로직
+- 코드 리뷰 및 품질 개선
+- 최종 검증 및 마무리
+
+### Gemini CLI 사용법
+
+```bash
+# 현재 디렉토리에서 Gemini 실행
+gemini
+
+# 프롬프트 직접 전달 (비대화형)
+gemini -p "이 코드베이스의 아키텍처를 설명해줘"
+
+# 특정 모델 사용
+gemini -m gemini-2.5-flash
+
+# 파일 포함 (@ 문법)
+gemini -p "@src/main.ts 이 파일 분석해줘"
+gemini -p "@src/ 전체 디렉토리 구조 설명해줘"
+gemini -p "@package.json @src/index.ts 의존성과 코드 분석"
+
+# 전체 프로젝트 분석
+gemini --all_files -p "프로젝트 구조 분석해줘"
 ```
+
+### 2단계 파이프라인 예시
+
+```bash
+# 1단계: Gemini로 전처리/요약
+gemini -p "@src/ 이 코드의 주요 문제점만 5줄로 요약해줘" > summary.txt
+
+# 2단계: Claude로 심화 분석
+# summary.txt 내용을 Claude에게 전달하여 개선안 요청
+```
+
+### Gemini CLI 사용 시점
+
+- 대용량 코드베이스 분석 (100KB 이상)
+- 전체 프로젝트 구조 파악
+- 여러 파일 비교 분석
+- Claude 컨텍스트 윈도우 초과 시
 
 ### Gemini 금지 영역
 
 - ❌ 보안/인증 코드
 - ❌ API 키/환경 변수
 - ❌ 복잡한 비즈니스 로직
+- ❌ 프로덕션 배포 스크립트
