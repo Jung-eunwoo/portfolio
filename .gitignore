@@ -27,3 +27,21 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# GitHub 설정 (로컬 전용)
+.github/
+
+# PR 템플릿 (로컬 작업용)
+PR_DESCRIPTION.md
+PULL_REQUEST_TEMPLATE.md
+
+# 임시 파일
+*.tmp
+*.temp
+*.swp
+*.bak
+*~
+
+# OS 파일
+Thumbs.db
+Desktop.ini
