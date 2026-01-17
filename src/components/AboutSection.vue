@@ -21,10 +21,10 @@ const highlights = [
 <template>
   <section id="about" class="about">
     <div class="container">
-      <h2 class="section-title">About Me</h2>
+      <h2 v-scroll-reveal class="section-title reveal">About Me</h2>
 
       <div class="about-content">
-        <div class="about-text">
+        <div v-scroll-reveal="{ delay: 100 }" class="about-text reveal">
           <p>
             안녕하세요! 저는 <strong>N년차 프론트엔드 개발자</strong>입니다.
           </p>
@@ -39,7 +39,12 @@ const highlights = [
         </div>
 
         <div class="highlights">
-          <div v-for="item in highlights" :key="item.title" class="highlight-card card">
+          <div
+            v-for="(item, index) in highlights"
+            :key="item.title"
+            v-scroll-reveal="{ delay: 200 + index * 100 }"
+            class="highlight-card card reveal-scale"
+          >
             <div class="highlight-icon">
               <svg v-if="item.icon === 'code'" width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 3a2 2 0 00-2 2v4a2 2 0 01-2 2H3v2h1a2 2 0 012 2v4a2 2 0 002 2h2v-2H8v-5a2 2 0 00-2-2 2 2 0 002-2V5h2V3H8zm8 0a2 2 0 012 2v4a2 2 0 002 2h1v2h-1a2 2 0 00-2 2v4a2 2 0 01-2 2h-2v-2h2v-5a2 2 0 012-2 2 2 0 01-2-2V5h-2V3h2z"/>

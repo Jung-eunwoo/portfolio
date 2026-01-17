@@ -1,30 +1,40 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
+
+const isVisible = ref(false)
+
 const socialLinks = [
   { name: 'GitHub', url: '#', icon: 'github' },
   { name: 'LinkedIn', url: '#', icon: 'linkedin' },
   { name: 'Email', url: 'mailto:your@email.com', icon: 'email' },
 ]
+
+onMounted(() => {
+  setTimeout(() => {
+    isVisible.value = true
+  }, 100)
+})
 </script>
 
 <template>
   <section id="hero" class="hero">
     <div class="container">
       <div class="hero-content">
-        <p class="hero-greeting">안녕하세요, 저는</p>
-        <h1 class="hero-name">
+        <p class="hero-greeting reveal-fade" :class="{ visible: isVisible }">안녕하세요, 저는</p>
+        <h1 class="hero-name reveal" :class="{ visible: isVisible }" style="transition-delay: 0.1s">
           <span class="gradient-text">홍길동</span>입니다
         </h1>
-        <p class="hero-role">Frontend Developer</p>
-        <p class="hero-description">
+        <p class="hero-role reveal" :class="{ visible: isVisible }" style="transition-delay: 0.2s">Frontend Developer</p>
+        <p class="hero-description reveal" :class="{ visible: isVisible }" style="transition-delay: 0.3s">
           사용자 경험을 최우선으로 생각하며, 깔끔하고 효율적인 코드를 작성합니다.
           <br />
           새로운 기술을 배우고 적용하는 것을 즐깁니다.
         </p>
-        <div class="hero-actions">
+        <div class="hero-actions reveal" :class="{ visible: isVisible }" style="transition-delay: 0.4s">
           <a href="#contact" class="btn">연락하기</a>
           <a href="#projects" class="btn btn-outline">프로젝트 보기</a>
         </div>
-        <div class="hero-social">
+        <div class="hero-social reveal" :class="{ visible: isVisible }" style="transition-delay: 0.5s">
           <a
             v-for="link in socialLinks"
             :key="link.name"

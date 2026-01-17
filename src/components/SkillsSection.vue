@@ -52,10 +52,15 @@ const skillCategories: SkillCategory[] = [
 <template>
   <section id="skills" class="skills">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
+      <h2 v-scroll-reveal class="section-title reveal">Skills</h2>
 
       <div class="skills-grid">
-        <div v-for="category in skillCategories" :key="category.title" class="skill-category card">
+        <div
+          v-for="(category, index) in skillCategories"
+          :key="category.title"
+          v-scroll-reveal="{ delay: 100 + index * 100 }"
+          class="skill-category card reveal-scale"
+        >
           <h3 class="category-title">{{ category.title }}</h3>
           <div class="skill-list">
             <span v-for="skill in category.skills" :key="skill.name" class="skill-tag">

@@ -46,13 +46,14 @@ const projects: Project[] = [
 <template>
   <section id="projects" class="projects">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
+      <h2 v-scroll-reveal class="section-title reveal">Projects</h2>
 
       <div class="projects-grid">
         <article
-          v-for="project in projects"
+          v-for="(project, index) in projects"
           :key="project.title"
-          class="project-card card"
+          v-scroll-reveal="{ delay: 100 + index * 150 }"
+          class="project-card card reveal"
           :class="{ 'featured': project.featured }"
         >
           <div class="project-content">

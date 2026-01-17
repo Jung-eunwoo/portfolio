@@ -35,10 +35,15 @@ const experiences: Experience[] = [
 <template>
   <section id="experience" class="experience">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <h2 v-scroll-reveal class="section-title reveal">Experience</h2>
 
       <div class="timeline">
-        <article v-for="exp in experiences" :key="exp.company + exp.period" class="timeline-item">
+        <article
+          v-for="(exp, index) in experiences"
+          :key="exp.company + exp.period"
+          v-scroll-reveal="{ delay: 100 + index * 200 }"
+          class="timeline-item reveal-left"
+        >
           <div class="timeline-marker"></div>
           <div class="timeline-content card">
             <div class="exp-header">
