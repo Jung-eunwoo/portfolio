@@ -22,7 +22,7 @@ onMounted(() => {
       <div class="hero-content">
         <p class="hero-greeting reveal-fade" :class="{ visible: isVisible }">안녕하세요, 저는</p>
         <h1 class="hero-name reveal" :class="{ visible: isVisible }" style="transition-delay: 0.1s">
-          <span class="gradient-text">홍길동</span>입니다
+          홍길동입니다
         </h1>
         <p class="hero-role reveal" :class="{ visible: isVisible }" style="transition-delay: 0.2s">Frontend Developer</p>
         <p class="hero-description reveal" :class="{ visible: isVisible }" style="transition-delay: 0.3s">
@@ -66,33 +66,39 @@ onMounted(() => {
   display: flex;
   align-items: center;
   padding-top: 80px;
+  border-bottom: 1px solid var(--border);
 }
 
 .hero-content {
-  max-width: 700px;
+  max-width: 600px;
 }
 
 .hero-greeting {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
 }
 
 .hero-name {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
 }
 
 .hero-role {
-  font-size: 1.5rem;
-  color: var(--accent);
-  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 400;
   margin-bottom: 1.5rem;
 }
 
 .hero-description {
   font-size: 1.125rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   line-height: 1.8;
 }
 
@@ -104,26 +110,25 @@ onMounted(() => {
 
 .hero-social {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .social-link {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background: var(--bg-card);
+  background: transparent;
   border: 1px solid var(--border);
-  color: var(--text-secondary);
-  transition: all 0.3s ease;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
 }
 
 .social-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

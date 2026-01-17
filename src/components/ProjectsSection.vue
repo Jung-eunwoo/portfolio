@@ -92,6 +92,10 @@ const projects: Project[] = [
 </template>
 
 <style scoped>
+.projects {
+  border-bottom: 1px solid var(--border);
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -105,7 +109,7 @@ const projects: Project[] = [
 }
 
 .project-card.featured {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: var(--border-strong);
 }
 
 .project-header {
@@ -113,7 +117,7 @@ const projects: Project[] = [
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 1.5rem;
-  color: var(--accent);
+  color: var(--text-muted);
 }
 
 .project-links {
@@ -127,7 +131,7 @@ const projects: Project[] = [
 }
 
 .project-link:hover {
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
 .project-content {
@@ -139,6 +143,7 @@ const projects: Project[] = [
 .project-title {
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
+  font-weight: 500;
 }
 
 .project-description {
@@ -152,7 +157,7 @@ const projects: Project[] = [
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-top: auto;
 }
 

@@ -66,6 +66,10 @@ const highlights = [
 </template>
 
 <style scoped>
+.about {
+  border-bottom: 1px solid var(--border);
+}
+
 .about-content {
   display: flex;
   flex-direction: column;
@@ -85,6 +89,7 @@ const highlights = [
 
 .about-text strong {
   color: var(--text-primary);
+  font-weight: 600;
 }
 
 .highlights {
@@ -102,16 +107,18 @@ const highlights = [
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
-  color: var(--accent);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
   margin-bottom: 1rem;
 }
 
 .highlight-title {
   margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 .highlight-description {

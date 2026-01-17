@@ -74,6 +74,10 @@ const skillCategories: SkillCategory[] = [
 </template>
 
 <style scoped>
+.skills {
+  border-bottom: 1px solid var(--border);
+}
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -85,11 +89,12 @@ const skillCategories: SkillCategory[] = [
 }
 
 .category-title {
-  font-size: 1rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 1rem;
+  font-weight: 500;
 }
 
 .skill-list {
@@ -101,16 +106,15 @@ const skillCategories: SkillCategory[] = [
 .skill-tag {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: rgba(59, 130, 246, 0.1);
-  border: 1px solid rgba(59, 130, 246, 0.2);
-  border-radius: 8px;
-  font-size: 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  font-size: 0.875rem;
   color: var(--text-primary);
   transition: all 0.2s ease;
 }
 
 .skill-tag:hover {
-  background: rgba(59, 130, 246, 0.2);
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: var(--text-primary);
 }
 </style>

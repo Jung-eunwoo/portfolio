@@ -71,6 +71,10 @@ const experiences: Experience[] = [
 </template>
 
 <style scoped>
+.experience {
+  border-bottom: 1px solid var(--border);
+}
+
 .timeline {
   position: relative;
   padding-left: 2rem;
@@ -82,9 +86,8 @@ const experiences: Experience[] = [
   left: 0;
   top: 0;
   bottom: 0;
-  width: 2px;
-  background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
-  border-radius: 1px;
+  width: 1px;
+  background: var(--border);
 }
 
 .timeline-item {
@@ -100,12 +103,12 @@ const experiences: Experience[] = [
   position: absolute;
   left: -2rem;
   top: 1.5rem;
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background: var(--bg-primary);
-  border: 2px solid var(--accent);
+  border: 2px solid var(--text-primary);
   border-radius: 50%;
-  transform: translateX(-5px);
+  transform: translateX(-4.5px);
 }
 
 .timeline-content {
@@ -124,11 +127,12 @@ const experiences: Experience[] = [
 .exp-company {
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
+  font-weight: 500;
 }
 
 .exp-role {
-  color: var(--accent);
-  font-weight: 500;
+  color: var(--text-secondary);
+  font-weight: 400;
 }
 
 .exp-period {
@@ -149,10 +153,10 @@ const experiences: Experience[] = [
 }
 
 .exp-description li::before {
-  content: '▹';
+  content: '—';
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--text-muted);
 }
 
 .exp-tech {

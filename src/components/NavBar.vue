@@ -36,9 +36,7 @@ onUnmounted(() => {
 <template>
   <header class="navbar" :class="{ 'scrolled': isScrolled }">
     <div class="container navbar-container">
-      <a href="#" class="logo">
-        <span class="gradient-text">Portfolio</span>
-      </a>
+      <a href="#" class="logo">Portfolio</a>
 
       <nav class="nav-desktop">
         <a v-for="item in navItems" :key="item.label" :href="item.href" class="nav-link">
@@ -79,12 +77,13 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 1.25rem 0;
   transition: all 0.3s ease;
+  background: var(--bg-primary);
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -96,39 +95,27 @@ onUnmounted(() => {
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
 .nav-desktop {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
 }
 
 .nav-link {
-  color: var(--text-secondary);
-  font-weight: 500;
+  color: var(--text-muted);
+  font-weight: 400;
+  font-size: 0.95rem;
   transition: color 0.2s ease;
   position: relative;
 }
 
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.2s ease;
-}
-
 .nav-link:hover {
   color: var(--text-primary);
-}
-
-.nav-link:hover::after {
-  width: 100%;
 }
 
 .mobile-menu-btn {
@@ -146,7 +133,7 @@ onUnmounted(() => {
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(10, 10, 10, 0.98);
+  background: rgba(255, 255, 255, 0.98);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   padding: 1rem;
@@ -156,13 +143,13 @@ onUnmounted(() => {
   display: block;
   padding: 1rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 400;
   text-align: center;
   transition: color 0.2s ease;
 }
 
 .nav-link-mobile:hover {
-  color: var(--accent);
+  color: var(--text-primary);
 }
 
 @media (max-width: 768px) {

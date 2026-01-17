@@ -53,7 +53,7 @@ const contactInfo = {
 }
 
 .contact-content {
-  max-width: 600px;
+  max-width: 500px;
   margin: 0 auto;
   text-align: center;
 }
@@ -70,12 +70,12 @@ const contactInfo = {
 .contact-description {
   font-size: 1.125rem;
   color: var(--text-secondary);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   line-height: 1.8;
 }
 
 .contact-btn {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .contact-links {
@@ -88,11 +88,12 @@ const contactInfo = {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-secondary);
+  color: var(--text-muted);
   transition: color 0.2s ease;
+  font-size: 0.95rem;
 }
 
 .contact-link:hover {
-  color: var(--accent);
+  color: var(--text-primary);
 }
 </style>
