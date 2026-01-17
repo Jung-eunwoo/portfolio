@@ -17,14 +17,17 @@ VITE_GEMINI_API_KEY=your_actual_api_key_here
 ## 3. 사용 예시
 
 ```typescript
-import { generateContent, generateContentStream } from '@/services/GeminiService';
+import {
+  generateContent,
+  generateContentStream,
+} from "@/services/GeminiService";
 
 // 일반 호출
-const response = await generateContent('안녕하세요!');
+const response = await generateContent("안녕하세요!");
 console.log(response);
 
 // 스트리밍 호출
-await generateContentStream('긴 텍스트 생성해줘', (chunk) => {
+await generateContentStream("긴 텍스트 생성해줘", (chunk) => {
   console.log(chunk); // 실시간으로 청크 출력
 });
 ```
