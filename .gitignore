@@ -28,9 +28,6 @@ dist-ssr
 *.sln
 *.sw?
 
-# GitHub 설정 (로컬 전용)
-.github/
-
 # PR 템플릿 (로컬 작업용)
 PR_DESCRIPTION.md
 PULL_REQUEST_TEMPLATE.md
