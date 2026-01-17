@@ -103,33 +103,33 @@ feat/* → develop → main → release
 ### 기본 형식
 
 ```
-[타입] 작업 내용 간단 요약
+타입: 작업 내용 간단 요약
 ```
 
 ### 커밋 타입
 
 | 타입 | 설명 | 예시 |
 |------|------|------|
-| `[feat]` | 새로운 기능 추가 | `[feat] 회원가입 입력폼 유효성 검증 추가` |
-| `[fix]` | 버그 수정 | `[fix] 예약 목록 조회 실패 오류 수정` |
-| `[design]` | CSS 및 UI 변경 | `[design] 메인 헤더 반응형 레이아웃 수정` |
-| `[refactor]` | 코드 리팩토링 | `[refactor] API 호출 로직 모듈화` |
-| `[test]` | 테스트 코드 추가/수정 | `[test] 로그인 API 테스트 추가` |
-| `[chore]` | 설정 파일 수정, 빌드 설정 | `[chore] ESLint 설정 파일 수정` |
-| `[docs]` | 문서 작성/수정 | `[docs] README 작성` |
-| `[comment]` | 주석 추가/수정 | `[comment] 유틸리티 함수 주석 추가` |
-| `[hotfix]` | 긴급 수정 | `[hotfix] 프로덕션 로그인 오류 긴급 수정` |
+| `feat` | 새로운 기능 추가 | `feat: 회원가입 입력폼 유효성 검증 추가` |
+| `fix` | 버그 수정 | `fix: 예약 목록 조회 실패 오류 수정` |
+| `design` | CSS 및 UI 변경 | `design: 메인 헤더 반응형 레이아웃 수정` |
+| `refactor` | 코드 리팩토링 | `refactor: API 호출 로직 모듈화` |
+| `test` | 테스트 코드 추가/수정 | `test: 로그인 API 테스트 추가` |
+| `chore` | 설정 파일 수정, 빌드 설정 | `chore: ESLint 설정 파일 수정` |
+| `docs` | 문서 작성/수정 | `docs: README 작성` |
+| `comment` | 주석 추가/수정 | `comment: 유틸리티 함수 주석 추가` |
+| `hotfix` | 긴급 수정 | `hotfix: 프로덕션 로그인 오류 긴급 수정` |
 
 ### 커밋 예시
 
 ```bash
-[feat] 사용자 프로필 페이지 구현
-[fix] 이미지 업로드 시 파일 크기 제한 오류 수정
-[design] 버튼 hover 효과 추가
-[refactor] API 서비스 클래스 구조 개선
-[test] 유저 인증 API 단위 테스트 작성
-[chore] Vite 설정 파일 업데이트
-[docs] Git 브랜치 전략 가이드 작성
+feat: 사용자 프로필 페이지 구현
+fix: 이미지 업로드 시 파일 크기 제한 오류 수정
+design: 버튼 hover 효과 추가
+refactor: API 서비스 클래스 구조 개선
+test: 유저 인증 API 단위 테스트 작성
+chore: Vite 설정 파일 업데이트
+docs: Git 브랜치 전략 가이드 작성
 ```
 
 ---
@@ -146,7 +146,7 @@ git checkout -b feat/user-profile
 
 # 3. 작업 후 커밋 & 푸시
 git add .
-git commit -m "[feat] 사용자 프로필 페이지 추가"
+git commit -m "feat: 사용자 프로필 페이지 추가"
 git push origin feat/user-profile
 
 # 4. GitHub에서 develop로 Pull Request 생성
