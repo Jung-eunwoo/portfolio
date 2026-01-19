@@ -30,7 +30,8 @@ const highlights = [
         <div v-scroll-reveal="{ delay: 100 }" class="about-text reveal">
           <p>
             안녕하세요! 저는
-            <strong>2년차 프론트엔드 개발자 정은우</strong>입니다.
+            <strong>개발 경력 1년 8개월의 프론트엔드 개발자 정은우</strong
+            >입니다.
           </p>
           <p>
             체인팜에서 공공기관 및 민간 웹사이트 21개를 동시 관리하며, 예약

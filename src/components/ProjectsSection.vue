@@ -13,14 +13,69 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "바로가기",
-    period: "2025.12 ~ 현재",
+    title: "AI 기반 스마트 일정 추천 플래너",
+    period: "2025.05 ~ 현재",
     company: "개인 프로젝트",
     description:
-      "교통약자를 위한 지하철 엘리베이터 경로 안내 서비스. 휠체어 이용자, 유모차 동반자 등 교통약자가 지하철역 내 엘리베이터 위치와 최적 경로를 쉽게 찾을 수 있도록 지원. 현재 진행 중인 프로젝트.",
-    tech: ["Vue.js", "TypeScript", "Pinia"],
+      "키워드 기반으로 하루 일정을 자동으로 추천해주는 스마트 플래너. 레고 블록을 쌓듯이 큰 일정만 선택하면 AI가 세부 장소와 루트를 생성. 프론트엔드 개발, 레이아웃 디자인, 프로젝트 구조 설계 및 리딩 담당. (팀 구성: BE 2명, FE 2명)",
+    tech: ["React", "React Query", "Storybook", "Vite", "TailwindCSS"],
     github: "https://github.com/T-BluePot/barogagi-front",
     featured: true,
+  },
+  {
+    title: "CHUKAPOKA",
+    period: "2023.12 ~ 2024.04",
+    company: "개인 프로젝트",
+    description:
+      "온라인 축하 편지 공유 사이트. 생일축하, 감사 인사 등 직접 전하기 어려운 말들을 간접적으로 전할 수 있는 서비스. 페이지 전체 레이아웃 디자인, circleIcon, treeEditCard 등 컴포넌트 제작. (팀 구성: BE 2명, FE 2명)",
+    tech: [
+      "Vue.js",
+      "SCSS",
+      "Vite",
+      "Storybook",
+      "Vercel",
+      "AWS Elastic Beanstalk",
+      "Spring Boot",
+    ],
+    github: "https://github.com/Chukapoka",
+    featured: true,
+  },
+  {
+    title: "NEVERMIND",
+    period: "2023.10 ~ 2023.12",
+    company: "광주인공지능사관학교",
+    description:
+      "CLIP 모델 기반 콘텐츠 속 코디 인식 및 추천 서비스. AI를 활용하여 온라인 콘텐츠 속에서 코디를 인식하고 자연어를 통해 개인화된 코디를 추천. 팀장으로서 프론트엔드 개발 및 프로젝트 총괄. 최종 프로젝트 발표회 우수상 수상. (팀 구성: BE 2명, FE 2명)",
+    tech: [
+      "React",
+      "TypeScript",
+      "TailwindCSS",
+      "Node.js",
+      "ExpressJS",
+      "Python",
+      "Oracle",
+      "Docker",
+    ],
+    github: "https://github.com/CDHANSOO/nevermind",
+    featured: true,
+  },
+  {
+    title: "NDB",
+    period: "2023.07 ~ 2023.08",
+    company: "광주인공지능사관학교",
+    description:
+      "Chat-GPT API를 활용한 개인별 맞춤 코딩 예제 제공 서비스. 프로그래밍 학습 개인화를 목적으로 개발. 팀장으로서 레이아웃 설계 및 전체 프로젝트 관리, 코딩테스트 페이지 iframe 구현. 핵심 프로젝트 발표회 최우수상 수상. (팀 구성: BE 4명, FE 2명)",
+    tech: [
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "Node.js",
+      "jQuery",
+      "ExpressJS",
+      "MySQL",
+    ],
+    github: "https://github.com/eunwooGOD/NDB-Project",
+    featured: false,
   },
   {
     title: "미리해핏 사용자/관리자 앱",
