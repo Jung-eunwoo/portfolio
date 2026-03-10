@@ -226,6 +226,7 @@ const counts = computed(() => ({
         <article
           v-for="(project, index) in filteredProjects"
           :key="project.title"
+          v-scroll-reveal="{ delay: index * 80 }"
           class="project-card card reveal"
           :class="{ featured: project.featured }"
           @click="selectedProject = project"
@@ -233,7 +234,6 @@ const counts = computed(() => ({
           tabindex="0"
           @keydown.enter="selectedProject = project"
           :aria-label="`${project.title} 상세 보기`"
-          :style="{ transitionDelay: `${index * 40}ms` }"
         >
           <!-- 카드 헤더 -->
           <div class="project-header">
