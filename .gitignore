@@ -28,6 +28,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Claude Code 설정 (로컬 작업용)
+.claude/
+
 # PR 템플릿 (로컬 작업용)
 PR_DESCRIPTION.md
 PULL_REQUEST_TEMPLATE.md
