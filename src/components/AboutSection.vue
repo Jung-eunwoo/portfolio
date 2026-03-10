@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import JungleDecorations from "./JungleDecorations.vue";
+
 const highlights = [
   {
     icon: "code",
@@ -8,9 +10,9 @@ const highlights = [
   },
   {
     icon: "performance",
-    title: "웹 접근성",
+    title: "성능 최적화",
     description:
-      "4개 공공 웹사이트 웹 접근성 인증 심사를 통과한 경험이 있습니다.",
+      "AI 챗봇 응답 시간 80% 단축 (1분 10초 → 15초), RAG 기반 의미론적 검색 구현.",
   },
   {
     icon: "collaboration",
@@ -23,6 +25,9 @@ const highlights = [
 
 <template>
   <section id="about" class="about">
+    <div class="about-decoration">
+      <JungleDecorations type="fern" size="md" position="absolute" :opacity="0.1" />
+    </div>
     <div class="container">
       <h2 v-scroll-reveal class="section-title reveal">About Me</h2>
 
@@ -97,6 +102,21 @@ const highlights = [
 <style scoped>
 .about {
   border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.about-decoration {
+  position: absolute;
+  top: 100px;
+  right: -60px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .about-content {

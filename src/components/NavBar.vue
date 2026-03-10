@@ -36,7 +36,12 @@ onUnmounted(() => {
 <template>
   <header class="navbar" :class="{ scrolled: isScrolled }">
     <div class="container navbar-container">
-      <a href="#" class="logo">Portfolio</a>
+      <a href="#" class="logo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="logo-leaf">
+          <path d="M12 2c5.33 4.55 8 6.75 8 9.72C20 17.4 16.4 21 12 21s-8-3.6-8-9.28C4 8.75 6.67 6.55 12 2z" />
+        </svg>
+        Portfolio
+      </a>
 
       <nav class="nav-desktop">
         <a
@@ -135,6 +140,20 @@ onUnmounted(() => {
   letter-spacing: 0.05em;
   writing-mode: vertical-rl;
   transform: rotate(270deg);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+}
+
+.logo:hover {
+  color: var(--forest-medium);
+}
+
+.logo-leaf {
+  flex-shrink: 0;
+  animation: sway 3s ease-in-out infinite;
+  transform-origin: center;
 }
 
 .nav-desktop {

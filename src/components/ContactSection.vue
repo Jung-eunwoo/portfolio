@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import JungleDecorations from "./JungleDecorations.vue";
+
 const contactInfo = {
   email: "jeunwoo8976@gmail.com",
   github: "https://github.com/Jung-eunwoo",
@@ -9,6 +11,9 @@ const contactInfo = {
 
 <template>
   <section id="contact" class="contact">
+    <div class="contact-decoration">
+      <JungleDecorations type="monstera" size="sm" position="absolute" :opacity="0.08" />
+    </div>
     <div class="container">
       <div class="contact-content">
         <h2 v-scroll-reveal class="section-title reveal">Contact</h2>
@@ -67,6 +72,21 @@ const contactInfo = {
 <style scoped>
 .contact {
   padding-bottom: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-decoration {
+  position: absolute;
+  bottom: 100px;
+  left: -40px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .contact-content {

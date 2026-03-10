@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import JungleDecorations from "./JungleDecorations.vue";
+
 interface Skill {
   name: string;
   level?: number;
@@ -14,6 +16,7 @@ const skillCategories: SkillCategory[] = [
     title: "Frontend",
     skills: [
       { name: "Vue.js" },
+      { name: "React" },
       { name: "TypeScript" },
       { name: "JavaScript" },
       { name: "HTML5" },
@@ -28,6 +31,7 @@ const skillCategories: SkillCategory[] = [
       { name: "Storybook" },
       { name: "Vee-Validation" },
       { name: "ARIA" },
+      { name: "postcss-prefix-selector" },
     ],
   },
   {
@@ -45,6 +49,8 @@ const skillCategories: SkillCategory[] = [
       { name: "n8n" },
       { name: "Pinecone" },
       { name: "MCP Server" },
+      { name: "Jenkins" },
+      { name: "SSE" },
       { name: "Git" },
       { name: "Vite" },
     ],
@@ -54,6 +60,12 @@ const skillCategories: SkillCategory[] = [
 
 <template>
   <section id="skills" class="skills">
+    <div class="skills-decoration-left">
+      <JungleDecorations type="vine" size="lg" position="absolute" :opacity="0.08" />
+    </div>
+    <div class="skills-decoration-right">
+      <JungleDecorations type="palm" size="md" position="absolute" :opacity="0.12" />
+    </div>
     <div class="container">
       <h2 v-scroll-reveal class="section-title reveal">Skills</h2>
 
@@ -83,6 +95,31 @@ const skillCategories: SkillCategory[] = [
 <style scoped>
 .skills {
   border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.skills-decoration-left {
+  position: absolute;
+  bottom: 50px;
+  left: -100px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.skills-decoration-right {
+  position: absolute;
+  top: 100px;
+  right: -80px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .skills-grid {
