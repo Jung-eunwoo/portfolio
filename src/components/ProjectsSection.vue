@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref } from "vue";
+import ProjectModal from "./ProjectModal.vue";
+
 interface Project {
   title: string;
   description: string;
@@ -10,6 +13,8 @@ interface Project {
   demo?: string;
   featured?: boolean;
 }
+
+const selectedProject = ref<Project | null>(null);
 
 const projects: Project[] = [
   {
@@ -98,250 +103,246 @@ const projects: Project[] = [
         <article
           v-for="(project, index) in projects"
           :key="project.title"
-          v-scroll-reveal="{ delay: 100 + index * 150 }"
+          v-scroll-reveal="{ delay: 80 + index * 100 }"
           class="project-card card reveal"
           :class="{ featured: project.featured }"
+          @click="selectedProject = project"
+          role="button"
+          tabindex="0"
+          @keydown.enter="selectedProject = project"
+          :aria-label="`${project.title} 상세 보기`"
         >
-          <div class="project-content">
-            <div class="project-header">
-              <svg
-                width="40"
-                height="40"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <path
-                  d="M3 3h18v18H3V3z"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M3 9h18M9 21V9"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-              <div class="project-links">
-                <a
-                  v-if="project.github"
-                  :href="project.github"
-                  class="project-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                  >
-                    <path
-                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"
-                    />
-                  </svg>
-                </a>
-                <a
-                  v-if="project.demo"
-                  :href="project.demo"
-                  class="project-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Live Demo"
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                  >
-                    <path
-                      d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            <div class="project-title-row">
-              <h3 class="project-title">{{ project.title }}</h3>
-              <span v-if="project.featured" class="featured-badge"
-                >Featured</span
-              >
-            </div>
-            <div class="project-meta">
-              <span class="project-company">{{ project.company }}</span>
-              <span class="project-period">{{ project.period }}</span>
-            </div>
-            <p class="project-description">{{ project.description }}</p>
-
-            <div class="project-tech">
-              <span v-for="tech in project.tech" :key="tech" class="tech-tag">
-                {{ tech }}
+          <!-- 카드 헤더: 번호 + 링크 아이콘 -->
+          <div class="project-header">
+            <span class="project-index">{{ String(index + 1).padStart(2, '0') }}</span>
+            <div class="project-badges">
+              <span v-if="project.featured" class="featured-star" aria-label="Featured">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                </svg>
               </span>
+              <svg v-if="project.github" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="project-icon-github">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              </svg>
             </div>
+          </div>
+
+          <!-- 제목 -->
+          <h3 class="project-title">{{ project.title }}</h3>
+
+          <!-- 메타 -->
+          <div class="project-meta">
+            <span class="project-company">{{ project.company }}</span>
+            <span class="project-period">{{ project.period }}</span>
+          </div>
+
+          <!-- 설명 (3줄 클램프) -->
+          <p class="project-description">{{ project.description }}</p>
+
+          <!-- 기술 스택 -->
+          <div class="project-tech">
+            <span v-for="tech in project.tech.slice(0, 4)" :key="tech" class="tech-tag">
+              {{ tech }}
+            </span>
+            <span v-if="project.tech.length > 4" class="tech-tag tech-more">
+              +{{ project.tech.length - 4 }}
+            </span>
+          </div>
+
+          <!-- 클릭 힌트 -->
+          <div class="card-hint">
+            자세히 보기
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
           </div>
         </article>
       </div>
     </div>
   </section>
+
+  <!-- 프로젝트 모달 -->
+  <Transition name="modal-fade">
+    <ProjectModal
+      v-if="selectedProject"
+      :project="selectedProject"
+      @close="selectedProject = null"
+    />
+  </Transition>
 </template>
 
 <style scoped>
 .projects {
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
 }
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.25rem;
 }
 
+/* ─── 카드 ─── */
 .project-card {
-  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  overflow: hidden;
+  padding: 1.75rem;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  transition: all 0.25s ease;
+  position: relative;
 }
 
-.project-card {
-  position: relative;
+.project-card:hover {
+  border-color: var(--sage-light);
+  box-shadow: 0 8px 28px rgba(26, 71, 42, 0.1);
+  transform: translateY(-3px);
 }
 
 .project-card.featured {
-  border-left: 3px solid var(--forest-medium);
+  border-left: 3px solid var(--forest-light);
 }
 
-.project-card.featured::before {
-  content: '';
-  position: absolute;
-  top: -8px;
-  right: 1rem;
-  width: 24px;
-  height: 24px;
-  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232d5a3f"><path d="M12 2L15 12L25 12L18 18L21 28L12 22L3 28L6 18L-1 12L9 12Z"/></svg>') no-repeat center;
-  background-size: contain;
-  opacity: 0.5;
+/* ─── 카드 헤더 ─── */
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
 }
 
-.project-card.featured:hover {
-  border-left-color: var(--forest-glow);
+.project-index {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
 }
 
-.project-card.featured:hover::before {
-  opacity: 0.8;
-}
-
-.project-title-row {
+.project-badges {
   display: flex;
   align-items: center;
   gap: 0.5rem;
 }
 
+.featured-star {
+  color: var(--sage);
+  display: flex;
+  align-items: center;
+}
+
+.project-icon-github {
+  color: var(--text-muted);
+}
+
+/* ─── 제목 ─── */
 .project-title {
-  flex: 1;
-  min-width: 0;
-  white-space: nowrap;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.625rem;
+  line-height: 1.4;
+  /* 2줄 클램프 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  cursor: default;
-  font-size: 1.25rem;
-  font-weight: 500;
 }
 
-.project-title:hover {
-  white-space: normal;
-  overflow: visible;
-}
-
-.featured-badge {
-  flex-shrink: 0;
-  padding: 0.15rem 0.5rem;
-  font-size: 0.65rem;
-  font-weight: 500;
-  color: var(--forest-medium);
-  border: 1px solid var(--forest-medium);
-  border-radius: 3px;
-}
-
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 1.5rem;
-  color: var(--text-muted);
-}
-
-.project-links {
-  display: flex;
-  gap: 0.75rem;
-}
-
-.project-link {
-  color: var(--text-muted);
-  transition: all 0.2s ease;
-}
-
-.project-link:hover {
-  color: var(--forest-dark);
-}
-
-.project-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
+/* ─── 메타 ─── */
 .project-meta {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.85rem;
-  font-family: "SF Mono", "Fira Code", monospace;
+  gap: 0;
+  margin-bottom: 0.875rem;
+  font-size: 0.78rem;
 }
 
 .project-company {
   color: var(--forest-medium);
-  font-weight: 500;
+  font-weight: 600;
+}
+
+.project-company::after {
+  content: "·";
+  margin: 0 0.4rem;
+  color: var(--text-muted);
+  font-weight: 400;
 }
 
 .project-period {
   color: var(--text-muted);
 }
 
-.project-company::after {
-  content: "·";
-  margin-left: 0.75rem;
-  color: var(--text-muted);
-}
-
+/* ─── 설명 (3줄 클램프) ─── */
 .project-description {
   color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.7;
+  font-size: 0.875rem;
+  line-height: 1.75;
   flex: 1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* ─── 기술 스택 ─── */
 .project-tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: auto;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
 }
 
 .tech-tag {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
+  font-weight: 500;
   color: var(--forest-medium);
+  background: var(--forest-pale);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
   font-family: "SF Mono", "Fira Code", monospace;
+}
+
+.tech-more {
+  color: var(--text-muted);
+  background: var(--cream-mid);
+}
+
+/* ─── 클릭 힌트 ─── */
+.card-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+  margin-top: auto;
+  transition: color 0.2s ease;
+}
+
+.project-card:hover .card-hint {
+  color: var(--forest-medium);
+}
+
+/* ─── 모달 트랜지션 ─── */
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.modal-fade-enter-from,
+.modal-fade-leave-to {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
