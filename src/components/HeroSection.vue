@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
+import JungleDecorations from "./JungleDecorations.vue";
 
 const isVisible = ref(false);
 
@@ -22,6 +23,12 @@ onMounted(() => {
 
 <template>
   <section id="hero" class="hero">
+    <div class="hero-decorations hero-decoration-left">
+      <JungleDecorations type="monstera" size="lg" position="absolute" :opacity="0.15" />
+    </div>
+    <div class="hero-decorations hero-decoration-right">
+      <JungleDecorations type="fern" size="lg" position="absolute" :opacity="0.12" />
+    </div>
     <div class="container">
       <div class="hero-content">
         <p class="hero-greeting reveal-fade" :class="{ visible: isVisible }">
@@ -121,6 +128,31 @@ onMounted(() => {
   align-items: center;
   padding-top: 80px;
   border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-decorations {
+  position: absolute;
+  top: 0;
+  opacity: 0.8;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-decoration-left {
+  left: -100px;
+  top: 100px;
+}
+
+.hero-decoration-right {
+  right: -80px;
+  top: 300px;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {

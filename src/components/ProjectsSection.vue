@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import JungleDecorations from "./JungleDecorations.vue";
+
 interface Project {
   title: string;
   description: string;
@@ -13,31 +15,31 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "AI 기반 스마트 일정 추천 플래너",
+    title: 'AI CS 챗봇 "미리봇"',
+    period: "2025.08 ~ 현재",
+    company: "체인팜",
+    description:
+      "n8n AI Agent 프롬프트 전달 구조 개선으로 응답 시간 1분 10초 → 15초로 약 80% 단축. Pinecone 벡터 DB를 활용한 RAG 기반 의미론적 문서 검색 구현. SSE를 통한 실시간 스트리밍 응답 처리. 전체 UI/UX 설계 및 프론트엔드 구현.",
+    tech: ["Vue.js 3", "TypeScript", "Vite", "SSE", "n8n", "Pinecone", "MCP Server", "Jenkins"],
+    featured: true,
+  },
+  {
+    title: "미리해핏 사용자/관리자 앱",
+    period: "2025.05 ~ 현재",
+    company: "체인팜",
+    description:
+      "Storybook 기반 CDD로 레슨 일정, 강사 관리, 예약 상태 등 핵심 컴포넌트를 독립 개발. Pinia Store 패턴으로 복잡한 예약 상태를 중앙 집중 관리하여 props drilling 제거. 8차 QA 대응 효율화.",
+    tech: ["Vue.js", "TypeScript", "Pinia", "Storybook", "Vee-Validation"],
+    featured: true,
+  },
+  {
+    title: "AI 기반 스마트 일정 추천 플래너 '바로가기'",
     period: "2025.05 ~ 현재",
     company: "개인 프로젝트",
     description:
       "키워드 기반으로 하루 일정을 자동으로 추천해주는 스마트 플래너. 레고 블록을 쌓듯이 큰 일정만 선택하면 AI가 세부 장소와 루트를 생성. 프론트엔드 개발, 레이아웃 디자인, 프로젝트 구조 설계 및 리딩 담당. (팀 구성: BE 2명, FE 2명)",
     tech: ["React", "React Query", "Storybook", "Vite", "TailwindCSS"],
     github: "https://github.com/T-BluePot/barogagi-front",
-    featured: true,
-  },
-  {
-    title: "CHUKAPOKA",
-    period: "2023.12 ~ 2024.04",
-    company: "개인 프로젝트",
-    description:
-      "온라인 축하 편지 공유 사이트. 생일축하, 감사 인사 등 직접 전하기 어려운 말들을 간접적으로 전할 수 있는 서비스. 페이지 전체 레이아웃 디자인, circleIcon, treeEditCard 등 컴포넌트 제작. (팀 구성: BE 2명, FE 2명)",
-    tech: [
-      "Vue.js",
-      "SCSS",
-      "Vite",
-      "Storybook",
-      "Vercel",
-      "AWS Elastic Beanstalk",
-      "Spring Boot",
-    ],
-    github: "https://github.com/Chukapoka",
     featured: true,
   },
   {
@@ -60,60 +62,6 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    title: "NDB",
-    period: "2023.07 ~ 2023.08",
-    company: "광주인공지능사관학교",
-    description:
-      "Chat-GPT API를 활용한 개인별 맞춤 코딩 예제 제공 서비스. 프로그래밍 학습 개인화를 목적으로 개발. 팀장으로서 레이아웃 설계 및 전체 프로젝트 관리, 코딩테스트 페이지 iframe 구현. 핵심 프로젝트 발표회 최우수상 수상. (팀 구성: BE 4명, FE 2명)",
-    tech: [
-      "HTML5",
-      "CSS3",
-      "JavaScript",
-      "Node.js",
-      "jQuery",
-      "ExpressJS",
-      "MySQL",
-    ],
-    github: "https://github.com/eunwooGOD/NDB-Project",
-    featured: false,
-  },
-  {
-    title: "미리해핏 사용자/관리자 앱",
-    period: "2025.05 ~ 현재",
-    company: "체인팜",
-    description:
-      "Storybook 기반 CDD로 레슨 일정, 강사 관리, 예약 상태 등 핵심 컴포넌트를 독립 개발. Pinia Store 패턴으로 복잡한 예약 상태를 중앙 집중 관리하여 props drilling 제거. 8차 QA 대응 효율화.",
-    tech: ["Vue.js", "TypeScript", "Pinia", "Storybook", "Vee-Validation"],
-    featured: true,
-  },
-  {
-    title: 'AI CS 챗봇 "미리봇"',
-    period: "2025.08 ~ 2025.09",
-    company: "체인팜",
-    description:
-      "n8n AI Agent 프롬프트 전달 구조 개선으로 응답 시간 1분 10초 → 15초로 약 80% 단축. Pinecone 벡터 DB를 활용한 RAG 기반 의미론적 문서 검색 구현. 전체 UI/UX 설계 및 프론트엔드 구현.",
-    tech: ["Vue.js", "n8n", "Pinecone", "MCP Server"],
-    featured: true,
-  },
-  {
-    title: "인천제3연육교 예약 페이지",
-    period: "2025.03 ~ 2025.05",
-    company: "체인팜",
-    description:
-      "프로젝트 시작부터 끝까지 프론트엔드 전체 단독 개발. 시설 예약 페이지 프론트엔드 설계 및 구현. 예약 플로우 전체 UI/UX 설계.",
-    tech: ["Vue.js", "TypeScript"],
-    featured: false,
-  },
-  {
-    title: "인천시티투어 관광 예약 웹사이트 리뉴얼",
-    period: "2024.10 ~ 2025.10",
-    company: "체인팜",
-    description:
-      "프론트엔드 전체 담당. 메인 페이지, GNB, Footer 퍼블리싱 및 기능 구현. 달력 컴포넌트, 버스 좌석 선택 UI, 결제 페이지, 게시판 CRUD 개발. WBS 작성 및 일정 관리.",
-    tech: ["JSP", "Spring Boot", "jQuery", "MyBatis", "MariaDB"],
-    featured: false,
-  },
-  {
     title: "여주시 공공 체육시설 통합 예약 시스템",
     period: "2024.09 ~ 2025.01",
     company: "체인팜",
@@ -129,6 +77,15 @@ const projects: Project[] = [
     description:
       "4개 공공 웹사이트(금은모래 캠핑장, 이포보 캠핑장, 인천 관광기업지원센터, 여주도시공사) 웹 접근성 인증 심사 통과. 시맨틱 마크업, ARIA 속성 적용, 키보드 접근성 개선.",
     tech: ["HTML5", "CSS3", "jQuery", "ARIA"],
+    featured: false,
+  },
+  {
+    title: "인천시티투어 관광 예약 웹사이트 리뉴얼",
+    period: "2024.10 ~ 2025.10",
+    company: "체인팜",
+    description:
+      "프론트엔드 전체 담당. 메인 페이지, GNB, Footer 퍼블리싱 및 기능 구현. 달력 컴포넌트, 버스 좌석 선택 UI, 결제 페이지, 게시판 CRUD 개발. WBS 작성 및 일정 관리.",
+    tech: ["JSP", "Spring Boot", "jQuery", "MyBatis", "MariaDB"],
     featured: false,
   },
 ];
@@ -257,12 +214,32 @@ const projects: Project[] = [
   overflow: hidden;
 }
 
+.project-card {
+  position: relative;
+}
+
 .project-card.featured {
   border-left: 3px solid var(--forest-medium);
 }
 
+.project-card.featured::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 1rem;
+  width: 24px;
+  height: 24px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%232d5a3f"><path d="M12 2L15 12L25 12L18 18L21 28L12 22L3 28L6 18L-1 12L9 12Z"/></svg>') no-repeat center;
+  background-size: contain;
+  opacity: 0.5;
+}
+
 .project-card.featured:hover {
   border-left-color: var(--forest-glow);
+}
+
+.project-card.featured:hover::before {
+  opacity: 0.8;
 }
 
 .project-title-row {
