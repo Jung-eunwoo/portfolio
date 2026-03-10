@@ -13,7 +13,7 @@ const navItems = [
 ];
 
 const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
+  isScrolled.value = window.scrollY > 60;
 };
 
 const toggleMobileMenu = () => {
@@ -35,9 +35,9 @@ onUnmounted(() => {
 
 <template>
   <header class="navbar" :class="{ scrolled: isScrolled }">
-    <div class="container navbar-container">
-      <a href="#" class="logo">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="logo-leaf">
+    <div class="navbar-inner container">
+      <a href="#" class="logo" @click="closeMobileMenu">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="logo-leaf">
           <path d="M12 2c5.33 4.55 8 6.75 8 9.72C20 17.4 16.4 21 12 21s-8-3.6-8-9.28C4 8.75 6.67 6.55 12 2z" />
         </svg>
         Portfolio
@@ -57,32 +57,18 @@ onUnmounted(() => {
       <button
         class="mobile-menu-btn"
         @click="toggleMobileMenu"
-        aria-label="메뉴 열기"
+        :aria-label="isMobileMenuOpen ? '메뉴 닫기' : '메뉴 열기'"
       >
-        <svg
-          v-if="!isMobileMenuOpen"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
+        <svg v-if="!isMobileMenuOpen" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
         </svg>
-        <svg
-          v-else
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path
-            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
-          />
+        <svg v-else width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
         </svg>
       </button>
     </div>
 
-    <Transition name="fade">
+    <Transition name="slide-down">
       <nav v-if="isMobileMenuOpen" class="nav-mobile">
         <a
           v-for="item in navItems"
@@ -99,83 +85,83 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* 오른쪽 수직 사이드바 네비게이션 */
 .navbar {
   position: fixed;
-  top: 30%;
-  right: 0%;
-  width: 80px;
-  margin: 0px 24px;
-  /* height: 100vh; */
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  padding: 2rem 0;
-  background: var(--bg-primary);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
+  /* 다크 히어로 위 → 투명 */
+  background: transparent;
+  --nav-text: var(--text-on-dark);
+  --nav-text-muted: var(--text-on-dark-muted);
+  --nav-logo-color: var(--text-on-dark);
 }
 
 .navbar.scrolled {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(249, 246, 240, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.06);
+  --nav-text: var(--text-secondary);
+  --nav-text-muted: var(--text-muted);
+  --nav-logo-color: var(--forest-dark);
 }
 
-.navbar-container {
+.navbar-inner {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  width: 100%;
-  padding: 0;
+  justify-content: space-between;
+  height: 64px;
 }
 
 .logo {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  color: var(--forest-dark);
-  letter-spacing: 0.05em;
-  writing-mode: vertical-rl;
-  transform: rotate(270deg);
+  color: var(--nav-logo-color);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .logo:hover {
-  color: var(--forest-medium);
+  color: var(--sage-light);
 }
 
 .logo-leaf {
   flex-shrink: 0;
-  animation: sway 3s ease-in-out infinite;
-  transform-origin: center;
+  animation: sway 4s ease-in-out infinite;
+  transform-origin: bottom center;
 }
 
 .nav-desktop {
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
+  gap: 0.25rem;
 }
 
 .nav-link {
-  color: var(--text-muted);
-  font-weight: 500;
-  font-size: 0.75rem;
+  color: var(--nav-text);
+  font-weight: 400;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.5rem 0.875rem;
+  border-radius: 6px;
   transition: all 0.2s ease;
-  position: relative;
-  writing-mode: vertical-rl;
-  transform: rotate(270deg);
-  padding: 0.75rem 0.5rem;
-  border-radius: 4px;
 }
 
 .nav-link:hover {
+  color: var(--nav-logo-color);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navbar.scrolled .nav-link:hover {
   color: var(--forest-dark);
   background: var(--forest-pale);
 }
@@ -184,94 +170,80 @@ onUnmounted(() => {
   display: none;
   background: none;
   border: none;
-  color: var(--text-primary);
+  color: var(--nav-text);
   cursor: pointer;
   padding: 0.5rem;
+  border-radius: 6px;
+  transition: color 0.3s ease;
 }
 
+/* ─── 모바일 메뉴 ─── */
 .nav-mobile {
-  display: none;
   position: absolute;
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-  padding: 1rem;
+  background: rgba(12, 34, 24, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-dark);
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0 1rem;
+}
+
+.navbar.scrolled .nav-mobile {
+  background: rgba(249, 246, 240, 0.98);
+  border-color: var(--border);
 }
 
 .nav-link-mobile {
   display: block;
-  padding: 1rem;
-  color: var(--text-secondary);
+  padding: 0.875rem 2rem;
+  color: var(--text-on-dark);
+  font-size: 0.875rem;
   font-weight: 500;
-  text-align: center;
-  transition: color 0.2s ease;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navbar.scrolled .nav-link-mobile {
+  color: var(--text-secondary);
 }
 
 .nav-link-mobile:hover {
-  color: var(--forest-dark);
+  color: var(--sage-light);
+  background: rgba(255, 255, 255, 0.06);
 }
 
-/* 모바일: 하단 가로 바로 전환 */
-@media (max-width: 768px) {
-  .navbar {
-    top: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    padding: 0.75rem 1rem;
-    border-left: none;
-    border-top: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-  }
+.navbar.scrolled .nav-link-mobile:hover {
+  color: var(--forest-dark);
+  background: var(--forest-pale);
+}
 
-  .navbar-container {
-    flex-direction: row;
-    justify-content: space-around;
-    width: 100%;
-    height: auto;
-  }
-
-  .logo {
-    display: none;
-  }
-
+/* ─── 모바일 브레이크포인트 ─── */
+@media (max-width: 640px) {
   .nav-desktop {
-    flex-direction: row;
-    gap: 0;
-    width: 100%;
-    justify-content: space-around;
-  }
-
-  .nav-link {
-    writing-mode: horizontal-tb;
-    transform: none;
-    font-size: 0.7rem;
-    padding: 0.5rem;
+    display: none;
   }
 
   .mobile-menu-btn {
-    display: none;
-  }
-
-  .nav-mobile {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
+/* ─── 트랜지션 ─── */
+.slide-down-enter-active,
+.slide-down-leave-active {
+  transition: all 0.25s ease;
 }
 
-.fade-enter-from,
-.fade-leave-to {
+.slide-down-enter-from,
+.slide-down-leave-to {
   opacity: 0;
+  transform: translateY(-8px);
 }
 </style>
