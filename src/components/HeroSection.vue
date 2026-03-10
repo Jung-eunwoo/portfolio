@@ -21,7 +21,55 @@ onMounted(() => {
 </script>
 
 <template>
-  <section id="hero" class="hero">
+  <section id="hero" class="hero dark-section">
+    <!-- 보타니컬 워터마크 SVG -->
+    <div class="hero-botanical" aria-hidden="true">
+      <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <!-- 몬스테라 큰 잎 -->
+        <path
+          d="M260 60 C340 80, 420 150, 420 240 C420 320, 370 390, 300 420 L260 450 L220 420 C150 390, 100 320, 100 240 C100 150, 180 80, 260 60"
+          stroke="rgba(184,212,188,0.18)"
+          stroke-width="1.5"
+          fill="rgba(45,90,63,0.08)"
+        />
+        <!-- 잎 구멍들 -->
+        <ellipse cx="220" cy="200" rx="30" ry="45" fill="rgba(12,34,24,0.6)" />
+        <ellipse cx="300" cy="215" rx="25" ry="40" fill="rgba(12,34,24,0.6)" />
+        <ellipse cx="260" cy="310" rx="40" ry="28" fill="rgba(12,34,24,0.5)" />
+        <!-- 잎맥 -->
+        <path
+          d="M260 60 L260 440"
+          stroke="rgba(184,212,188,0.15)"
+          stroke-width="1"
+        />
+        <path
+          d="M260 150 Q210 200, 175 250 M260 150 Q310 200, 345 250"
+          stroke="rgba(184,212,188,0.12)"
+          stroke-width="0.8"
+          stroke-linecap="round"
+        />
+        <path
+          d="M260 230 Q200 275, 155 310 M260 230 Q320 275, 365 310"
+          stroke="rgba(184,212,188,0.12)"
+          stroke-width="0.8"
+          stroke-linecap="round"
+        />
+        <!-- 작은 잎 장식 (아래) -->
+        <path
+          d="M80 480 Q100 450, 130 460 Q120 490, 95 500 Q75 510, 80 480"
+          stroke="rgba(184,212,188,0.2)"
+          stroke-width="1"
+          fill="rgba(45,90,63,0.12)"
+        />
+        <path
+          d="M380 500 Q400 470, 430 480 Q420 510, 395 520 Q370 530, 380 500"
+          stroke="rgba(184,212,188,0.2)"
+          stroke-width="1"
+          fill="rgba(45,90,63,0.12)"
+        />
+      </svg>
+    </div>
+
     <div class="container">
       <div class="hero-content">
         <p class="hero-greeting reveal-fade" :class="{ visible: isVisible }">
@@ -57,8 +105,8 @@ onMounted(() => {
           :class="{ visible: isVisible }"
           style="transition-delay: 0.4s"
         >
-          <a href="#contact" class="btn">연락하기</a>
-          <a href="#projects" class="btn btn-outline">프로젝트 보기</a>
+          <a href="#contact" class="btn btn-light">연락하기</a>
+          <a href="#projects" class="btn btn-outline-light">프로젝트 보기</a>
         </div>
         <div
           class="hero-social reveal"
@@ -76,8 +124,8 @@ onMounted(() => {
           >
             <svg
               v-if="link.icon === 'github'"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -87,8 +135,8 @@ onMounted(() => {
             </svg>
             <svg
               v-else-if="link.icon === 'linkedin'"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -98,8 +146,8 @@ onMounted(() => {
             </svg>
             <svg
               v-else-if="link.icon === 'email'"
-              width="24"
-              height="24"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="currentColor"
             >
@@ -111,6 +159,12 @@ onMounted(() => {
         </div>
       </div>
     </div>
+
+    <!-- 스크롤 힌트 -->
+    <div class="scroll-hint" :class="{ visible: isVisible }">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
   </section>
 </template>
 
@@ -119,51 +173,77 @@ onMounted(() => {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding-top: 80px;
-  border-bottom: 1px solid var(--border);
+  padding-top: 64px; /* navbar 높이 */
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── 보타니컬 워터마크 ─── */
+.hero-botanical {
+  position: absolute;
+  right: -5%;
+  top: 5%;
+  width: 45%;
+  max-width: 500px;
+  height: 90%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-botanical svg {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 640px;
 }
 
 .hero-greeting {
-  font-size: 1rem;
-  color: var(--text-muted);
-  margin-bottom: 0.75rem;
+  font-size: 1.85rem;
+  color: var(--text-on-dark-muted);
+  /* margin-bottom: 1rem; */
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 500;
+  letter-spacing: 0.15em;
+  font-weight: 400;
 }
 
 .hero-name {
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--forest-dark), var(--forest-light));
+  margin-bottom: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  /* 크림 → 세이지 그라디언트 */
+  background: linear-gradient(135deg, #f5f0e8 30%, #b8d4bc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-role {
-  font-size: 1.25rem;
-  color: var(--text-secondary);
+  font-size: 1.1rem;
+  color: var(--sage-light);
   font-weight: 400;
-  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
 }
 
 .hero-description {
-  font-size: 1.125rem;
-  color: var(--text-secondary);
+  font-size: 1rem;
+  color: var(--text-on-dark-sub);
   margin-bottom: 2.5rem;
-  line-height: 1.8;
+  line-height: 1.9;
 }
 
 .hero-actions {
   display: flex;
   gap: 1rem;
   margin-bottom: 3rem;
+  flex-wrap: wrap;
 }
 
 .hero-social {
@@ -175,35 +255,88 @@ onMounted(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  border: 1px solid var(--border-dark);
+  color: var(--text-on-dark-muted);
   transition: all 0.2s ease;
 }
 
 .social-link:hover {
-  color: var(--forest-dark);
-  border-color: var(--forest-dark);
-  background: var(--forest-pale);
+  color: var(--text-on-dark);
+  border-color: var(--sage-light);
+  background: rgba(184, 212, 188, 0.1);
+}
+
+/* ─── 스크롤 힌트 ─── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 1s ease 1.2s;
+  pointer-events: none;
+}
+
+.scroll-hint.visible {
+  opacity: 1;
+}
+
+.scroll-hint span {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-on-dark-muted);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(
+    to bottom,
+    var(--text-on-dark-muted),
+    transparent
+  );
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.1);
+  }
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding-top: 100px;
-    min-height: auto;
-    padding-bottom: 3rem;
+    padding-top: 80px;
+    min-height: 100svh;
+  }
+
+  .hero-botanical {
+    width: 65%;
+    opacity: 0.6;
   }
 
   .hero-actions {
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  .btn {
-    text-align: center;
-    justify-content: center;
+  .scroll-hint {
+    display: none;
   }
 }
 </style>

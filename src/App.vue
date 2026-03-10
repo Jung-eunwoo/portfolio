@@ -5,6 +5,7 @@ import AboutSection from './components/AboutSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
 import ExperienceSection from './components/ExperienceSection.vue'
+import CapabilitiesSection from './components/CapabilitiesSection.vue'
 import ContactSection from './components/ContactSection.vue'
 </script>
 
@@ -15,12 +16,13 @@ import ContactSection from './components/ContactSection.vue'
     <AboutSection />
     <SkillsSection />
     <ProjectsSection />
+    <CapabilitiesSection />
     <ExperienceSection />
     <ContactSection />
   </main>
   <footer class="footer">
     <div class="container">
-      <p>&copy; {{ new Date().getFullYear() }} Your Name. All rights reserved.</p>
+      <p>&copy; {{ new Date().getFullYear() }} 정은우. All rights reserved.</p>
     </div>
   </footer>
 </template>

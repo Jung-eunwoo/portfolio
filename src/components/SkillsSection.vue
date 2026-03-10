@@ -1,7 +1,6 @@
 <script setup lang="ts">
 interface Skill {
   name: string;
-  level?: number;
 }
 
 interface SkillCategory {
@@ -14,6 +13,7 @@ const skillCategories: SkillCategory[] = [
     title: "Frontend",
     skills: [
       { name: "Vue.js" },
+      { name: "React" },
       { name: "TypeScript" },
       { name: "JavaScript" },
       { name: "HTML5" },
@@ -28,6 +28,7 @@ const skillCategories: SkillCategory[] = [
       { name: "Storybook" },
       { name: "Vee-Validation" },
       { name: "ARIA" },
+      { name: "postcss-prefix-selector" },
     ],
   },
   {
@@ -45,6 +46,8 @@ const skillCategories: SkillCategory[] = [
       { name: "n8n" },
       { name: "Pinecone" },
       { name: "MCP Server" },
+      { name: "Jenkins" },
+      { name: "SSE" },
       { name: "Git" },
       { name: "Vite" },
     ],
@@ -82,26 +85,28 @@ const skillCategories: SkillCategory[] = [
 
 <style scoped>
 .skills {
+  background: var(--cream-mid);
   border-bottom: 1px solid var(--border);
 }
 
 .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
   gap: 1.5rem;
 }
 
 .skill-category {
-  padding: 1.5rem;
+  padding: 1.75rem;
+  background: var(--bg-card);
 }
 
 .category-title {
-  font-size: 0.85rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin-bottom: 1.25rem;
+  font-weight: 600;
 }
 
 .skill-list {
@@ -112,18 +117,19 @@ const skillCategories: SkillCategory[] = [
 
 .skill-tag {
   display: inline-block;
-  padding: 0.5rem 1rem;
-  background: transparent;
-  border: 1px solid var(--forest-light);
+  padding: 0.4rem 0.875rem;
+  background: var(--forest-pale);
+  border: 1px solid var(--sage-light);
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   color: var(--forest-dark);
   transition: all 0.2s ease;
+  cursor: default;
 }
 
 .skill-tag:hover {
-  background: var(--forest-light);
-  border-color: var(--forest-light);
+  background: var(--forest-medium);
+  border-color: var(--forest-medium);
   color: #ffffff;
 }
 </style>
