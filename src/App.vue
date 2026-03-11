@@ -6,7 +6,6 @@ import SkillsSection from './components/SkillsSection.vue'
 import ProjectsSection from './components/ProjectsSection.vue'
 import ExperienceSection from './components/ExperienceSection.vue'
 import ContactSection from './components/ContactSection.vue'
-import JungleDecorations from './components/JungleDecorations.vue'
 </script>
 
 <template>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import JungleDecorations from "./JungleDecorations.vue";
-
 interface Project {
   title: string;
   description: string;
