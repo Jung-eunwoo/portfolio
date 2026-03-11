@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import JungleDecorations from "./JungleDecorations.vue";
-
 const highlights = [
   {
     icon: "code",
@@ -25,9 +23,6 @@ const highlights = [
 
 <template>
   <section id="about" class="about">
-    <div class="about-decoration">
-      <JungleDecorations type="fern" size="md" position="absolute" :opacity="0.1" />
-    </div>
     <div class="container">
       <h2 v-scroll-reveal class="section-title reveal">About Me</h2>
 
@@ -58,8 +53,8 @@ const highlights = [
             <div class="highlight-icon">
               <svg
                 v-if="item.icon === 'code'"
-                width="32"
-                height="32"
+                width="28"
+                height="28"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -69,8 +64,8 @@ const highlights = [
               </svg>
               <svg
                 v-else-if="item.icon === 'performance'"
-                width="32"
-                height="32"
+                width="28"
+                height="28"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -80,8 +75,8 @@ const highlights = [
               </svg>
               <svg
                 v-else-if="item.icon === 'collaboration'"
-                width="32"
-                height="32"
+                width="28"
+                height="28"
                 viewBox="0 0 24 24"
                 fill="currentColor"
               >
@@ -101,39 +96,25 @@ const highlights = [
 
 <style scoped>
 .about {
+  background: var(--bg-primary);
   border-bottom: 1px solid var(--border);
-  position: relative;
-  overflow: hidden;
-}
-
-.about-decoration {
-  position: absolute;
-  top: 100px;
-  right: -60px;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.container {
-  position: relative;
-  z-index: 1;
 }
 
 .about-content {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 .about-text {
-  max-width: 700px;
+  max-width: 680px;
 }
 
 .about-text p {
-  font-size: 1.125rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  margin-bottom: 1rem;
-  line-height: 1.8;
+  margin-bottom: 1.1rem;
+  line-height: 1.85;
 }
 
 .about-text strong {
@@ -143,41 +124,43 @@ const highlights = [
 
 .highlights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
 .highlight-card {
   text-align: center;
-  padding: 2rem;
+  padding: 2.25rem 1.75rem;
 }
 
 .highlight-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
   background: var(--forest-pale);
-  border: 1px solid var(--forest-light);
   color: var(--forest-dark);
-  margin-bottom: 1rem;
-  transition: all 0.2s ease;
+  margin-bottom: 1.25rem;
+  transition: all 0.25s ease;
 }
 
 .highlight-card:hover .highlight-icon {
-  background: var(--forest-light);
+  background: var(--forest-medium);
   color: #ffffff;
 }
 
 .highlight-title {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
 }
 
 .highlight-description {
   color: var(--text-secondary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
 }
 </style>
