@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="8" fill="#0c2218"/>
+  <!-- 잎 -->
+  <path d="M16 4c6.4 5.46 9.6 8.1 9.6 11.66C25.6 20.88 21.28 25.2 16 25.2S6.4 20.88 6.4 15.66C6.4 12.1 9.6 9.46 16 4z" fill="#4a8c5f"/>
+  <!-- 잎맥 -->
+  <line x1="16" y1="6" x2="16" y2="24" stroke="#b8d4bc" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M16 12 Q12.5 15 11 18" stroke="#b8d4bc" stroke-width="0.6" stroke-linecap="round" fill="none" opacity="0.5"/>
+  <path d="M16 12 Q19.5 15 21 18" stroke="#b8d4bc" stroke-width="0.6" stroke-linecap="round" fill="none" opacity="0.5"/>
+</svg>
