@@ -42,3 +42,6 @@ PULL_REQUEST_TEMPLATE.md
 # OS 파일
 Thumbs.db
 Desktop.ini
+
+# ai 
+.claude
