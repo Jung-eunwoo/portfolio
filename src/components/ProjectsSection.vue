@@ -32,22 +32,18 @@ const projects: Project[] = [
   /* ─ 회사 ─────────────────────────────── */
   {
     title: 'AI CS 챗봇 "미리봇"',
-    period: "2025.08 ~ 현재",
+    period: "2026.01 ~ 2026.03",
     company: "체인팜",
     role: "UI/UX 설계 및 프론트엔드 전담 (FE 1명, BE 2명)",
     type: "company",
     description:
-      "공공시설(캠핑장·체육시설·관광기업지원센터) 고객 문의를 자동화하는 AI 챗봇 SDK. n8n AI Agent의 프롬프트 전달 구조를 재설계해 응답 시간을 1분 10초 → 15초로 80% 단축. Pinecone 벡터 DB 기반 RAG로 조례·규정 의미론적 검색을 구현하고, SSE 스트리밍·postcss-prefix-selector CSS 격리·Jenkins CI/CD까지 전 과정을 단독 설계·구현했습니다.",
+      "AI 기반 지역 내 시설 안내 CS 챗봇 서비스.",
     highlights: [
-      "응답 시간 1분 10초 → 15초 (80% 단축) — 각 MCP 툴에 맞는 프롬프트만 분리 전달하도록 구조 재설계",
-      "RAG + Pinecone 벡터 DB로 조례/규정 의미론적 검색 구현 — 키워드 매칭 한계 극복",
-      "SSE 기반 실시간 스트리밍 + AbortController 응답 중단(STOP) 구현",
-      "postcss-prefix-selector로 호스트 JSP 사이트와 CSS 충돌 0건 달성",
-      "주민번호·계좌번호 정규식 기반 개인정보 자동 차단 필터 설계",
-      "퀵버튼·카드형·스텝형 등 채팅 특화 컴포넌트 라이브러리 자체 구축",
-      "Jenkins CI/CD 파이프라인으로 SDK 자동 빌드·배포 환경 구성",
+      "레거시 시스템(JSP 기반)에 Vue 위젯을 SDK 형태(Vite IIFE 빌드)로 삽입하는 구조를 설계하고, 호스트 페이지와의 CSS 충돌을 postcss-prefix-selector 기반 격리로 해결하여 스타일 충돌 0건 달성",
+      "사용자가 응답 완료까지 대기해야 하는 UX 문제를 SSE 기반 실시간 스트리밍(fetch + ReadableStream)으로 해결하여 체감 응답 시간 단축",
+      "수동 배포의 휴먼 에러를 방지하기 위해 Jenkins CI/CD 파이프라인을 구축하여 배포 자동화",
     ],
-    tech: ["Vue.js 3", "TypeScript", "Vite", "SSE", "n8n", "Pinecone", "MCP Server", "postcss-prefix-selector", "Jenkins"],
+    tech: ["Vue.js 3", "TypeScript", "Vite", "SSE", "n8n", "postcss-prefix-selector", "Jenkins"],
     featured: true,
   },
   {
@@ -57,15 +53,11 @@ const projects: Project[] = [
     role: "프론트엔드 개발 (FE 3명, BE 2명, 기획 1명)",
     type: "company",
     description:
-      "일 평균 1,500명이 이용하는 피트니스 센터 예약 서비스. 예약 상태(예약중/완료/취소/환불)가 여러 컴포넌트에서 필요해 props drilling이 심각해진 문제를, Pinia CenterStore 패턴으로 중앙 집중 관리하여 해결. Storybook 기반 CDD로 핵심 컴포넌트를 독립 개발·문서화해 8차 QA를 효율적으로 대응. PR 리뷰에서 모달 메시지 상수화를 제안해 프로젝트 전체에 적용, 유지보수성을 향상시켰습니다.",
+      "월 5만명이 사용하는 피트니스 센터 예약 서비스. 사용자 앱(예약·이용권·출입 내역)과 관리자 앱(레슨 일정·강사 관리)을 프론트엔드 전담 개발했습니다.",
     highlights: [
-      "Pinia CenterStore로 예약 상태 중앙 집중 관리 → props drilling 완전 제거",
-      "Storybook CDD 도입으로 컴포넌트 단위 독립 개발 — 8차 QA 버그 범위 특정 용이",
-      "회원가입(FCM Token·전화번호 인증), 예약·이용권, 출입 내역 화면 개발",
-      "관리자 앱: 레슨 일정 시각화, 강사 관리·프로필 페이지 개발",
-      "TypeScript 인터페이스로 API 응답 타입 정의 → 런타임 오류 사전 방지",
-      "PR 리뷰에서 모달 메시지 상수화 제안 → 프로젝트 전체 적용",
-      "사용자 매뉴얼 및 정책 플로우 차트 작성",
+      "사용자 앱/관리자 앱에서 유사한 UI가 중복 개발되는 비효율을 해결하기 위해 Storybook 기반 CDD를 도입하여 UI 컴포넌트 40개+를 독립 설계·개발하고, 디자이너와 컴포넌트 단위 리뷰를 진행하여 UI 일관성 확보",
+      "단일 boolean 구조로는 동일 슬롯에서 복수 항목을 선택할 수 없는 문제를, 배열 기반 데이터 구조로 재설계하고 3단 컴포넌트 계층(Form→Selector→Item)으로 책임을 분리하여 다중 선택 기능 구현",
+      "앱 전체에 흩어져 매번 다르게 안내되던 모달 UI를 전수 파악하여, Store 기반 모달 관리 패턴(호출→응답→후속처리)으로 통합하고 메시지를 상수로 일원화하여 사용자 안내 일관성 확보",
     ],
     tech: ["Vue.js 3", "TypeScript", "Pinia", "Storybook", "Vee-Validation", "Git"],
     featured: true,
@@ -78,14 +70,13 @@ const projects: Project[] = [
     role: "프론트엔드 리드 (팀: BE 2명, FE 2명)",
     type: "personal",
     description:
-      "키워드 기반으로 하루 일정을 자동 추천하는 스마트 플래너. 레고 블록처럼 큰 일정만 선택하면 AI가 세부 장소·루트를 생성. 프론트엔드 개발, 레이아웃 디자인, 프로젝트 구조 설계 및 리딩 담당.",
+      "큰 일정만 선택하면 AI가 세부 장소·루트를 자동 생성하는 하루 일정 추천 플래너. 프론트엔드 아키텍처 설계 및 팀 리딩 담당.",
     highlights: [
-      "AI 기반 하루 일정 자동 생성 서비스 기획 및 FE 리드",
-      "React + React Query로 서버 상태 관리 최적화",
-      "Storybook 기반 디자인 시스템 구축",
+      "4인 팀에서 프론트엔드 아키텍처 설계 및 Storybook 기반 컴포넌트 시스템을 구축하고, Git 서브모듈 전략과 CodeRabbit을 도입하여 코드 리뷰 효율화 및 팀 개발 컨벤션 정립을 주도",
+      "5단계 회원가입 플로우를 설계하고, 인증 시간 만료 시 자동 이탈 처리 및 히스토리 기반 안전한 뒤로가기(safeBack) 유틸리티를 직접 설계하여 엣지 케이스 대응",
     ],
     tech: ["React", "React Query", "Storybook", "Vite", "TailwindCSS"],
-    github: "https://github.com/T-BluePot/barogagi-front",
+    github: "https://github.com/T-BluePot/barogagi",
     featured: true,
   },
   {
