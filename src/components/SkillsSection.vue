@@ -25,6 +25,7 @@ const skillCategories: SkillCategory[] = [
     title: "State & UI",
     skills: [
       { name: "Pinia" },
+      { name: "TanStack Query" },
       { name: "Storybook" },
       { name: "Vee-Validation" },
       { name: "ARIA" },

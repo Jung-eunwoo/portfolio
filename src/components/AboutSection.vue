@@ -4,19 +4,19 @@ const highlights = [
     icon: "code",
     title: "컴포넌트 주도 개발",
     description:
-      "Storybook 기반 CDD로 재사용 가능한 컴포넌트를 개발하고 문서화합니다.",
+      "Storybook 기반 CDD로 UI 컴포넌트 40개+를 독립 설계·개발하고, 디자이너와 컴포넌트 단위 리뷰를 진행하여 UI 일관성 확보.",
   },
   {
     icon: "performance",
-    title: "성능 최적화",
+    title: "서비스 전 과정 주도",
     description:
-      "AI 챗봇 응답 시간 80% 단축 (1분 10초 → 15초), RAG 기반 의미론적 검색 구현.",
+      "설계·개발·배포를 넘어, 현장 담당자 소통을 통한 민원 데이터 분석 및 주간 현황 대시보드 개발로 민원 30% 감소.",
   },
   {
     icon: "collaboration",
-    title: "풀스택 역량",
+    title: "DX 개선 및 팀 리딩",
     description:
-      "FE-BE 양쪽 이해를 바탕으로 효율적인 협업과 문제 해결을 수행합니다.",
+      "Git 서브모듈 전략, CodeRabbit 도입, Jenkins CI/CD 구축 등 팀 개발 생산성 향상을 주도.",
   },
 ];
 </script>
@@ -29,17 +29,10 @@ const highlights = [
       <div class="about-content">
         <div v-scroll-reveal="{ delay: 100 }" class="about-text reveal">
           <p>
-            안녕하세요! 저는
-            <strong>개발 경력 1년 8개월의 프론트엔드 개발자 정은우</strong
-            >입니다.
+            <strong>월 5만명이 사용하는 예약 서비스의 프론트엔드를 바닥부터 설계하고, 운영하고 있습니다.</strong>
           </p>
           <p>
-            체인팜에서 공공기관 및 민간 웹사이트 21개를 동시 관리하며, 예약
-            시스템, AI 챗봇, 웹 접근성 인증 등 다양한 프로젝트를 수행했습니다.
-          </p>
-          <p>
-            Vue.js, TypeScript, Pinia를 주로 사용하며, Storybook 기반 컴포넌트
-            주도 개발(CDD)과 웹 접근성에 관심이 많습니다.
+            런칭 이후에도 11개 현장 담당자와 직접 소통하며 운영상 불편을 파악하고, 주간 현황 대시보드를 추가 개발해 민원 건수를 30% 감소시키는 등 단순한 기능 개발을 넘어 사후 개선까지 서비스 전 과정을 주도해왔습니다.
           </p>
         </div>
 

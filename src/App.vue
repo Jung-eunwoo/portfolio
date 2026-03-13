@@ -7,6 +7,7 @@ import ProjectsSection from './components/ProjectsSection.vue'
 import ExperienceSection from './components/ExperienceSection.vue'
 import CapabilitiesSection from './components/CapabilitiesSection.vue'
 import ContactSection from './components/ContactSection.vue'
+import ScrollToTopButton from './components/ScrollToTopButton.vue'
 </script>
 
 <template>
@@ -20,6 +21,7 @@ import ContactSection from './components/ContactSection.vue'
     <ExperienceSection />
     <ContactSection />
   </main>
+  <ScrollToTopButton />
   <footer class="footer">
     <div class="container">
       <p>&copy; {{ new Date().getFullYear() }} 정은우. All rights reserved.</p>
