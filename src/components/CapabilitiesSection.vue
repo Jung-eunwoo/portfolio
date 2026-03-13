@@ -21,14 +21,14 @@ const capabilities: Capability[] = [
   },
   {
     number: "02",
-    title: "성능 최적화",
-    summary: "측정 가능한 성과로 사용자 경험을 개선합니다",
+    title: "서비스 운영 및 개선",
+    summary: "런칭 이후에도 현장 피드백을 직접 수집하고 개선합니다",
     points: [
-      "AI 챗봇 응답시간 80% 단축 (1분 10초 → 15초)",
-      "SSE 기반 실시간 스트리밍 응답 처리",
-      "RAG + Pinecone 벡터 DB 의미론적 검색 구현",
+      "11개 현장 담당자와 직접 소통, 주간 현황 대시보드 개발로 민원 30% 감소",
+      "SSE 기반 실시간 스트리밍으로 챗봇 체감 응답 시간 단축",
+      "Jenkins CI/CD 파이프라인 구축으로 수동 배포 휴먼 에러 방지",
     ],
-    tags: ["SSE", "n8n", "Pinecone", "Vite", "성능 튜닝"],
+    tags: ["SSE", "Jenkins", "n8n", "Vite", "대시보드"],
   },
   {
     number: "03",
